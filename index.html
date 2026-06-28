@@ -462,21 +462,118 @@
       }
     }
 
-    /* ─── Guarantee (Trust) Section Polish ─── */
+    /* ─── Guarantee Section (Trust Section) Framed Editorial Design ─── */
+    .trust {
+      background: var(--green-deep) !important;
+      color: #FFFFFF;
+      padding: 8rem 0 !important; /* Elegant section top/bottom padding */
+    }
+
     .trust-grid {
-      align-items: center !important; /* Vertical centering alignment */
+      display: grid !important;
+      grid-template-columns: 0.75fr 1.25fr !important; /* 37.5% image, 62.5% text layout balance */
+      gap: 5rem !important; /* Spacious vertical whitespace division */
+      align-items: center !important; /* Center content vertically */
     }
 
     .trust-image-wrap {
-      border-radius: 0 48px 0 48px !important; /* Asymmetrical architectural corners */
+      width: 100% !important;
+      aspect-ratio: 4 / 5 !important; /* Refined portrait lookbook layout */
+      border-radius: 24px !important; /* Standardized rounded corners on all sides */
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important; /* Premium drop shadow */
+      margin: 0 !important;
+    }
+
+    .trust-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
     }
 
     .trust-content {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: flex-start !important;
+      padding: 0 !important; /* Reset padding box sizes */
+      gap: 3.5rem !important; /* Layout whitespace gap */
+      box-sizing: border-box;
+      background: transparent !important; /* Clear background to let forest green act as canvas */
+    }
+
+    .trust-guarantee {
+      border-bottom: none !important;
+      padding-bottom: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .trust-guarantee-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: #FFFFFF !important;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .trust-guarantee-text {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #E2E8F0 !important;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    .trust-guarantee-text strong {
+      color: #FAF7F2 !important;
+      font-weight: 600;
+    }
+
+    /* ─── Pricing Feature Layout Drama ─── */
+    .trust-pricing-feature {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start !important; /* Stop the button from stretching */
-      height: 100%;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .pricing-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .pricing-huge-number {
+      font-family: var(--font-serif);
+      font-size: 4.5rem;
+      font-weight: 500;
+      color: #C8963E !important; /* Premium Gold price number */
+      line-height: 0.9;
+    }
+
+    .pricing-badge-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .pricing-badge-label {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #C8963E !important; /* Gold label text */
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pricing-badge-promo {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: #FFFFFF !important;
+      font-weight: 500;
     }
 
     .trust-content .btn-light {
@@ -485,6 +582,24 @@
       text-transform: uppercase;
       font-weight: 600;
       letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 991px) {
+      .trust-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+      }
+      .trust-image-wrap {
+        aspect-ratio: 16 / 10 !important; /* Wide banner on mobile devices */
+        border-radius: 16px !important;
+      }
+      .trust-content {
+        padding: 0 !important;
+        gap: 2.5rem !important;
+      }
+      .pricing-huge-number {
+        font-size: 3.5rem;
+      }
     }
 
     /* ─── How It Works (Solution Section) Green Theme Overrides ─── */
@@ -865,22 +980,29 @@
     <!-- ═══════════════════════════════════════ TRUST ══ -->
     <section class="trust section" id="guarantee">
       <div class="container trust-grid">
-        <div class="trust-image-wrap" data-animate="fade-up" data-delay="0">
+        <div class="trust-image-wrap" data-animate="fade-right" data-delay="0">
           <img src="bathroom.png" alt="Luxury modern bathroom with black sink and gold fixtures" class="trust-img" loading="lazy" />
         </div>
 
-        <div class="trust-content" data-animate="fade-up" data-delay="150">
+        <div class="trust-content" data-animate="fade-left" data-delay="150">
           <div class="trust-guarantee">
             <h3 class="trust-guarantee-title">Our Guarantee</h3>
-            <p class="trust-guarantee-text">We're committed to finding you the right tradesperson. If our first
-              recommendations aren't the right match, we'll reassess your needs and present further options.</p>
+            <p class="trust-guarantee-text">
+              We are committed to finding the right tradesperson for your home. If our first recommendations aren’t a perfect match, <strong>we will reassess your scope and source further options at zero cost</strong>.
+            </p>
           </div>
 
-          <div class="trust-guarantee">
-            <h3 class="trust-guarantee-title">Transparent Pricing</h3>
-            <p class="trust-guarantee-text">Standard inspections are priced at £99. However, to preserve the quality of
-              our service during this initial rollout, complimentary inspections are strictly limited to the first 50
-              homeowners who register their interest.</p>
+          <div class="trust-pricing-feature">
+            <div class="pricing-badge-row">
+              <span class="pricing-huge-number">£99</span>
+              <div class="pricing-badge-details">
+                <span class="pricing-badge-label">Standard Assessment Value</span>
+                <span class="pricing-badge-promo">Complimentary for First 50 Signups</span>
+              </div>
+            </div>
+            <p class="trust-guarantee-text">
+              To preserve our strict quality standards during our initial rollout, complimentary inspections are <strong>strictly limited to the first 50 registered homeowners</strong> in Winchester.
+            </p>
           </div>
 
           <a href="#waitlist" class="btn btn-light" style="margin-top: 1rem;">Claim your voucher →</a>
