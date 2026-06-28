@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archwy — Expert Plumbing & Gas Advice (Design Experiment)</title>
+  <meta name="description"
+    content="Archwy provides expert plumbing and gas advice for homeowners across Winchester and beyond, connecting you with trusted tradespeople and competitive quotes." />
+  <meta name="google-site-verification" content="m9G9bIfSxz6fwnVNIembfogaIPI4xV0XDk3LWQSjxm8" />
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RMV0ZKJ4J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1RMV0ZKJ4J');
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="icon" type="image/png" href="favicon.png?v=3" />
+
+  <!-- Schema.org Structured Data for Google/SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Archwy",
+    "url": "https://archwy.co.uk",
+    "logo": "https://archwy.co.uk/favicon.png",
+    "description": "Expert plumbing & gas advice for homeowners in Winchester and beyond.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winchester",
+      "addressCountry": "GB"
+    }
+  }
+  </script>
+
+  <!-- Embedded Design Overrides (UI/UX Experiment) -->
+  <style>
+    /* ─── Centered Hero Section (Heat Geek Inspired) ─── */
+    .hero-centered {
+      padding: 10rem 0 7rem;
+      background-color: #FAF7F2; /* Soft warm cream background */
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-centered-content {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .hero-centered-welcome {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #374A43; /* Brand dark green */
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-centered-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      line-height: 1.2;
+      color: #1A1A1A;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-centered-heading .highlight {
+      color: #C8963E; /* Warm accent gold */
+      font-style: italic;
+    }
+
+    .hero-centered-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      line-height: 1.65;
+      color: #555555;
+      margin-bottom: 3.5rem;
+      max-width: 650px;
+    }
+
+    /* Interactive Postcode checker (Pill shape) */
+    .hero-search-wrapper {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .hero-search-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #374A43;
+      margin-bottom: 1rem;
+    }
+
+    .hero-search-box {
+      display: flex;
+      background: #FFFFFF;
+      border: 1px solid #D1CFCB;
+      border-radius: 50px;
+      padding: 8px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-search-box:focus-within {
+      border-color: #374A43;
+      box-shadow: 0 8px 30px rgba(55, 74, 67, 0.12);
+    }
+
+    .hero-search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 0 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #1A1A1A;
+      outline: none;
+      width: 100%;
+    }
+
+    .hero-search-input::placeholder {
+      color: #9C9A96;
+    }
+
+    .hero-search-btn {
+      border-radius: 40px !important;
+      padding: 14px 32px !important;
+      font-size: 1.05rem !important;
+      font-weight: 600 !important;
+      border: none !important;
+      background-color: #374A43 !important;
+      color: #FFFFFF !important;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-search-btn:hover {
+      background-color: #263530 !important;
+    }
+
+    .hero-search-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: #8C8A85;
+      margin-top: 1.25rem;
+    }
+
+    /* Section Order Adjustments */
+    .section {
+      padding: 6rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-centered-heading {
+        font-size: 2.6rem;
+      }
+      .hero-centered-sub {
+        font-size: 1.15rem;
+      }
+      .hero-search-box {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 10px;
+      }
+      .hero-search-input {
+        padding: 12px;
+        text-align: center;
+      }
+      .hero-search-btn {
+        width: 100%;
+        margin-top: 8px;
+      }
+    }
+
+    /* ─── Meet the Founder Split Layout ─── */
+    .meet-founder-inner-split {
+      display: grid;
+      grid-template-columns: 0.8fr 1.25fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .meet-founder-video-wrap {
+      position: relative;
+    }
+
+    .founder-portrait-video-container {
+      position: relative;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      padding-top: 133%; /* 3:4 portrait aspect ratio */
+    }
+
+    .founder-portrait-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .meet-founder-content-split {
+      text-align: left;
+    }
+
+    .meet-founder-letter-card-split {
+      background: #FFFFFF;
+      border: 1px solid #E5E3DF;
+      border-radius: 24px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+      margin-top: 2rem;
+    }
+
+    .meet-founder-bio-short p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #374A43;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .meet-founder-signature-block-split {
+      margin: 2.5rem 0 2rem;
+    }
+
+    .meet-founder-signature-block-split .signature-line {
+      width: 40px;
+      height: 2px;
+      background: #C8963E;
+      margin-bottom: 0.75rem;
+    }
+
+    .meet-founder-signature-block-split .signature-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.25rem;
+    }
+
+    .meet-founder-signature-block-split .signature-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: #8C8A85;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 991px) {
+      .meet-founder-inner-split {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .meet-founder-letter-card-split {
+        padding: 2rem;
+      }
+      .founder-portrait-video-container {
+        padding-top: 100%; /* Square ratio on mobile */
+      }
+    }
+
+    /* ─── Benefits Section Split Screen (Option A) ─── */
+    .benefits-split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr; /* Symmetrical column layout */
+      min-height: 600px;
+      background-color: #FAF7F2; /* Cream/off-white */
+      overflow: hidden;
+      padding: 0 !important; /* Reset padding since columns handle it */
+    }
+
+    .benefits-split-left {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end; /* Push content towards center-right alignment */
+      padding: 6rem 4rem 6rem 2rem;
+      min-height: 400px;
+      border-radius: 0 48px 48px 0; /* Smooths out the vertical dividing line with a capsule curve */
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .benefits-split-video-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .benefits-split-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .benefits-split-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(38, 53, 48, 0.65); /* Rich dark green overlay to make white text pop */
+    }
+
+    .benefits-split-heading-container {
+      position: relative;
+      z-index: 2;
+      max-width: 480px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .benefits-split-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      line-height: 1.25;
+      color: #FFFFFF !important; /* Crisp white */
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .benefits-split-right {
+      background-color: #FAF7F2; /* Original warm off-white */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 6rem 2rem 6rem 5rem;
+    }
+
+    /* ─── Steps Dots Visibility Overrides ─── */
+    .steps-dots .dot {
+      background: rgba(255, 255, 255, 0.3) !important; /* trans white on green background */
+    }
+
+    .steps-dots .dot.active {
+      background: #C8963E !important; /* gold active dot */
+      transform: scale(1.2);
+    }
+
+
+
+    .benefits-split-list-container {
+      max-width: 480px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* List Item Styles (Clean, no background cards) */
+    .benefits-split-right .benefit-item {
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid #E5E3DF;
+      background: transparent !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .benefits-split-right .benefit-item:last-child {
+      border-bottom: none;
+    }
+
+    .benefits-split-right .benefit-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #C8963E; /* Gold/Bronze */
+      background: transparent !important;
+      border: none !important;
+      width: auto !important;
+      height: auto !important;
+      box-shadow: none !important;
+      flex-shrink: 0;
+      padding: 0;
+      margin-top: 2px;
+    }
+
+    .benefits-split-right .benefit-content {
+      text-align: left;
+    }
+
+    .benefits-split-right .benefit-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+    }
+
+    .benefits-split-right .benefit-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #555555;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .benefits-split {
+        grid-template-columns: 1fr;
+        min-height: auto !important;
+      }
+      .benefits-split-left {
+        justify-content: center;
+        padding: 4rem 1.5rem !important;
+        min-height: auto !important;
+        height: 200px !important; /* Compact high-end banner height */
+        border-radius: 0 0 32px 32px !important; /* Clean visual transition curve */
+        text-align: center;
+      }
+      .benefits-split-heading-container {
+        text-align: center;
+        max-width: 100%;
+      }
+      .benefits-split-title {
+        font-size: clamp(1.6rem, 5.5vw, 2rem) !important;
+        text-align: center;
+        line-height: 1.3;
+      }
+      .benefits-split-right {
+        padding: 3rem 1.5rem !important;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    /* ─── Guarantee (Trust) Section Polish ─── */
+    .trust-grid {
+      align-items: center !important; /* Vertical centering alignment */
+    }
+
+    .trust-image-wrap {
+      border-radius: 0 48px 0 48px !important; /* Asymmetrical architectural corners */
+    }
+
+    .trust-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start !important; /* Stop the button from stretching */
+      height: 100%;
+    }
+
+    .trust-content .btn-light {
+      width: fit-content !important;
+      padding: 16px 36px !important;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── How It Works (Solution Section) Green Theme Overrides ─── */
+    .how-it-works {
+      background: var(--green-deep) !important;
+      color: #FFFFFF;
+      padding: 8rem 0; /* Standard high-end padding spacing */
+    }
+
+    .how-it-works-header .section-eyebrow {
+      color: #C8963E !important; /* Premium Gold Eyebrow */
+      font-weight: 600;
+    }
+
+    .how-it-works-header .section-title {
+      color: #FFFFFF !important;
+    }
+
+    .how-it-works-lead {
+      color: #FAF7F2 !important;
+      opacity: 0.85;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem;
+      align-items: stretch; /* Crucial for equal heights! */
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 2rem !important; /* Uniform padding for perfect grid alignment */
+      border-radius: 24px;
+      box-sizing: border-box;
+      background: transparent;
+      border: 1px solid transparent; /* Align size properties with step-highlighted card */
+    }
+
+    .step-number {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: rgba(250, 247, 242, 0.65) !important; /* Highly visible warm cream */
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #FFFFFF !important;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .step-text {
+      color: #E2E8F0 !important;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+      opacity: 0.85;
+    }
+
+    /* ─── Step 2 Highlight ─── */
+    .step-highlighted {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(200, 150, 62, 0.3) !important;
+      border-radius: 0 32px 0 32px !important; /* Architectural corners matching bathroom picture */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15) !important;
+      transform: scale(1.02);
+      z-index: 2 !important;
+    }
+
+    @media (max-width: 991px) {
+      .steps-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        scroll-behavior: smooth !important;
+        gap: 20px !important;
+        padding-bottom: 20px !important;
+        margin-inline: -1.5rem !important; /* Pull container slightly outer for full-bleed feel */
+        padding-inline: 1.5rem !important;
+        scrollbar-width: none !important; /* Hide scrollbar on Firefox */
+      }
+      .steps-grid::-webkit-scrollbar {
+        display: none !important; /* Hide scrollbar on Chrome/Safari */
+      }
+      .step {
+        flex: 0 0 85% !important; /* 85% width on mobile */
+        width: 85% !important;
+        scroll-snap-align: start !important;
+        padding: 2rem !important;
+      }
+      .step-highlighted {
+        transform: none !important;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════ HEADER ══ -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#home" class="logo" aria-label="Archwy Home">ARCHWY</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link" data-section="how-it-works">How it works</a></li>
+        <li><a href="#benefits" class="nav-link" data-section="benefits">Benefits</a></li>
+        <li><a href="#testimonials" class="nav-link" data-section="testimonials">Reviews</a></li>
+        <li><a href="#meet-founder" class="nav-link" data-section="meet-founder">Founder</a></li>
+        <li><a href="#guarantee" class="nav-link" data-section="guarantee">Guarantee</a></li>
+        <li class="nav-mobile-cta-wrap"><a href="#waitlist" class="btn btn-primary nav-mobile-cta">Claim Voucher</a></li>
+        <li class="nav-mobile-footer">
+          <div class="nav-mobile-footer-location">Winchester, England</div>
+          <div class="nav-mobile-footer-logo">ARCHWY</div>
+          <div class="nav-mobile-footer-copy">&copy; 2026 ARCHWY. All rights reserved.</div>
+        </li>
+      </ul>
+      <a href="#waitlist" class="btn btn-nav-cta" id="navCtaBtn">Claim Voucher</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════ HERO (CENTERED & INTERACTIVE) ══ -->
+    <section class="hero-centered section" id="home">
+      <div class="container hero-centered-content" data-animate="fade-up">
+        <h2 class="hero-centered-welcome">Welcome to Archwy</h2>
+        <h1 class="hero-centered-heading">
+          Plumbing & gas quotes done <span class="highlight">the Archwy way</span>
+        </h1>
+        <p class="hero-centered-sub">
+          A dedicated expert inspects your property and sources 2-3 competitive quotes from vetted local plumbers on your behalf.
+        </p>
+
+        <!-- Interactive Postcode Checker -->
+        <div class="hero-search-wrapper">
+          <p class="hero-search-label">Claim your free £99 assessment voucher in seconds:</p>
+          <div class="hero-search-box">
+            <input type="text" id="heroPostcode" class="hero-search-input" placeholder="Enter your postcode (e.g. SO23)" aria-label="Enter your postcode" />
+            <button type="button" id="heroCtaBtn" class="btn btn-primary hero-search-btn">Check Eligibility</button>
+          </div>
+          <p class="hero-search-note">Only 50 complimentary vouchers available for Winchester residents.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════ HOW IT WORKS ══ -->
+    <section class="how-it-works section" id="how-it-works">
+      <div class="container">
+        <div class="how-it-works-header" data-animate="fade-up">
+          <p class="section-eyebrow">The solution</p>
+          <h2 class="section-title">How Archwy Works</h2>
+          <p class="how-it-works-lead">
+            We’ve identified the common frustrations homeowners face when hiring tradesmen and created a simpler, more effective solution.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          
+          <!-- Step 1 -->
+          <div class="step" data-animate="fade-up" data-delay="0">
+            <span class="step-number">01</span>
+            <h3 class="step-title">Tell us what you need</h3>
+            <p class="step-text">Connect with a plumbing & gas expert. We perform a single, independent assessment of your property to standardize your project scope.</p>
+          </div>
+
+          <!-- Step 2 (Highlighted) -->
+          <div class="step step-highlighted" data-animate="fade-up" data-delay="150">
+            <span class="step-number">02</span>
+            <h3 class="step-title">We handle the legwork</h3>
+            <p class="step-text">We source 2–3 competitive quotes from our vetted network on your behalf, saving you hours of phone calls, site visits, and pushy sales reps.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step" data-animate="fade-up" data-delay="300">
+            <span class="step-number">03</span>
+            <h3 class="step-title">Choose with confidence</h3>
+            <p class="step-text">Review your standardized, competitive quotes side-by-side. Pick the perfect option for your budget and timeline with zero sales pressure.</p>
+          </div>
+          
+        </div>
+        <div class="steps-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ BENEFITS (SPLIT SCREEN) ══ -->
+    <section class="benefits-split" id="benefits">
+      
+      <!-- Left Column: Video Background + White Heading -->
+      <div class="benefits-split-left" data-animate="fade-right">
+        <div class="benefits-split-video-wrapper">
+          <video class="benefits-split-video" autoplay muted loop playsinline>
+            <source src="generate_a_landscape_video_of.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="benefits-split-overlay"></div>
+        </div>
+        <div class="benefits-split-heading-container">
+          <h2 class="benefits-split-title">Benefits of Using Archwy</h2>
+        </div>
+      </div>
+
+      <!-- Right Column: Solid Off-white + Original List Items -->
+      <div class="benefits-split-right">
+        <div class="benefits-split-list-container" data-animate="fade-left">
+          
+          <div class="benefit-item">
+            <span class="benefit-number">01</span>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Speak with one independent professional</h3>
+              <p class="benefit-text">Who works in your best interest.</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <span class="benefit-number">02</span>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Avoid sales-driven companies</h3>
+              <p class="benefit-text">And unnecessary upselling.</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <span class="benefit-number">03</span>
+            <div class="benefit-content">
+              <h3 class="benefit-title">One conversation, one inspection</h3>
+              <p class="benefit-text">Multiple trusted options.</p>
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+      
+    </section>
+
+    <!-- ══════════════════════════════════ REVIEWS ══ -->
+    <section class="testimonials section" id="testimonials">
+      <div class="testimonials-glow-1"></div>
+      <div class="testimonials-glow-2"></div>
+
+      <div class="container">
+        <div class="testimonials-header" data-animate="fade-up">
+          <p class="section-eyebrow">Client Reviews</p>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <div class="section-title-line"></div>
+        </div>
+
+        <div class="testimonials-grid" data-animate="fade-up">
+          <!-- Testimonial Card 1 -->
+          <div class="testimonial-card">
+            <div class="quote-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+              </svg>
+            </div>
+            <blockquote class="quote-text">
+              “After a severe plumbing issue in our home, we reached out for help. He provided honest, knowledgeable advice, took the stress out of the process, and connected us with an excellent tradesperson. We couldn’t be happier with the result.”
+            </blockquote>
+            <div class="quote-meta">
+              <div class="quote-profile">
+                <img src="IMG_5265.png" alt="Sophie Clarke" class="quote-avatar" />
+                <div class="author-details">
+                  <cite class="quote-author">Sophie Clarke</cite>
+                  <span class="quote-verified">Verified Review</span>
+                </div>
+              </div>
+              <div class="star-rating" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 2 -->
+          <div class="testimonial-card">
+            <div class="quote-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+              </svg>
+            </div>
+            <blockquote class="quote-text">
+              “A really great service. Corban took the time to understand exactly what we wanted, including our budget and timeline, and delivered beyond our expectations. We’re absolutely delighted with the outcome.”
+            </blockquote>
+            <div class="quote-meta">
+              <div class="quote-profile">
+                <img src="f2ccf609-22b4-41b7-acd7-31c7847b5f48.jpg" alt="Nick Bennett" class="quote-avatar" />
+                <div class="author-details">
+                  <cite class="quote-author">Nick Bennett</cite>
+                  <span class="quote-verified">Verified Review</span>
+                </div>
+              </div>
+              <div class="star-rating" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonials-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════ MEET THE FOUNDER ══ -->
+    <section class="meet-founder section" id="meet-founder">
+      <div class="container meet-founder-inner-split">
+        
+        <!-- Video on the Left (Portrait) -->
+        <div class="meet-founder-video-wrap" data-animate="fade-right">
+          <div class="founder-portrait-video-container">
+            <video class="founder-portrait-video" autoplay muted loop playsinline>
+              <source src="generate_the_image_into_a_vide.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay-badge">Corban Cutten, Founder</div>
+          </div>
+        </div>
+
+        <!-- Shortened Text on the Right -->
+        <div class="meet-founder-content-split" data-animate="fade-left">
+          <p class="section-eyebrow">Meet the Founder</p>
+          <h2 class="section-title">A Message From Corban</h2>
+          
+          <div class="meet-founder-letter-card-split">
+            <div class="meet-founder-bio-short">
+              <p>
+                "After years as a gas safe engineer in Winchester, I realized homeowners are often at a disadvantage when hiring tradespeople—forced to make major heating and plumbing decisions without independent expert advice."
+              </p>
+              <p>
+                "I started Archwy to change that. I perform a single, honest inspection of your property and source competitive quotes from our vetted local network on your behalf. We handle the stress so you can make confident choices."
+              </p>
+            </div>
+            
+            <div class="meet-founder-signature-block-split">
+              <div class="signature-line"></div>
+              <p class="signature-name">Corban Cutten</p>
+              <p class="signature-title">Founder of Archwy</p>
+            </div>
+
+            <div class="meet-founder-actions-split">
+              <a href="#waitlist" class="btn btn-primary">Claim your voucher →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════ TRUST ══ -->
+    <section class="trust section" id="guarantee">
+      <div class="container trust-grid">
+        <div class="trust-image-wrap" data-animate="fade-up" data-delay="0">
+          <img src="bathroom.png" alt="Luxury modern bathroom with black sink and gold fixtures" class="trust-img" loading="lazy" />
+        </div>
+
+        <div class="trust-content" data-animate="fade-up" data-delay="150">
+          <div class="trust-guarantee">
+            <h3 class="trust-guarantee-title">Our Guarantee</h3>
+            <p class="trust-guarantee-text">We're committed to finding you the right tradesperson. If our first
+              recommendations aren't the right match, we'll reassess your needs and present further options.</p>
+          </div>
+
+          <div class="trust-guarantee">
+            <h3 class="trust-guarantee-title">Transparent Pricing</h3>
+            <p class="trust-guarantee-text">Standard inspections are priced at £99. However, to preserve the quality of
+              our service during this initial rollout, complimentary inspections are strictly limited to the first 50
+              homeowners who register their interest.</p>
+          </div>
+
+          <a href="#waitlist" class="btn btn-light" style="margin-top: 1rem;">Claim your voucher →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════ LAUNCH VOUCHER FORM ══ -->
+    <section class="waitlist section" id="waitlist">
+      <div class="container waitlist-inner">
+        <h2 class="section-title waitlist-title" data-animate="fade-up">Secure Your Free £99 Assessment Voucher</h2>
+        <p class="waitlist-sub" data-animate="fade-up">
+          We are launching soon in Winchester! Register below to claim one of 50 complimentary expert inspections and quote-sourcing vouchers.
+        </p>
+
+        <div class="waitlist-info-box" data-animate="fade-up">
+          <p>
+            <strong>Limited Launch Offer:</strong> To guarantee high service quality, complimentary vouchers are strictly limited to the first 50 registered homeowners in our Winchester service area.
+          </p>
+        </div>
+
+        <form class="waitlist-form wizard-form" id="waitlistForm" data-animate="fade-up" novalidate>
+
+          <!-- STEP 1: Eligibility & Location -->
+          <div class="form-step active" data-step="1">
+            <h3 class="step-heading">Step 1 of 3: Check Eligibility</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fpostcode" class="form-label">Postcode</label>
+                <input type="text" id="fpostcode" name="postcode" class="form-input" placeholder="e.g. SO23 8GX" required />
+                <span class="form-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="flocation" class="form-label">Area / Town</label>
+                <input type="text" id="flocation" name="location" class="form-input" placeholder="e.g. Stanmore, Winchester" required />
+                <span class="form-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn btn-primary btn-next">Next Step: Project Details →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Project Info -->
+          <div class="form-step" data-step="2" style="display: none;">
+            <h3 class="step-heading">Step 2 of 3: Upcoming Projects</h3>
+
+            <div class="form-group question-group">
+              <label class="question-label">What plumbing or gas project do you have coming up?</label>
+              <div class="radio-pill-group vertical-pills">
+                <label class="radio-pill">
+                  <input type="radio" name="project_type" value="Boiler Replacement / Upgrade" required>
+                  <span class="pill-text">Boiler Replacement or Upgrade</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="project_type" value="Bathroom Remodel / Refurbish">
+                  <span class="pill-text">Bathroom Remodel or Refurbish</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="project_type" value="General Plumbing Issue / Repair">
+                  <span class="pill-text">General Plumbing Issue or Repair</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="project_type" value="None - Just securing my voucher for future use">
+                  <span class="pill-text">None — Just securing my voucher for future use</span>
+                </label>
+              </div>
+              <span class="form-error" role="alert"></span>
+            </div>
+
+            <div class="form-group question-group">
+              <label class="question-label" for="q_extra">Briefly describe the job (optional)</label>
+              <textarea id="q_extra" name="q_extra" class="form-input form-textarea" placeholder="e.g., Boiler is old and needs replacing, bathroom remodel ideas..." rows="3"></textarea>
+            </div>
+
+            <div class="form-actions form-actions-split">
+              <button type="button" class="btn btn-outline btn-prev">← Back</button>
+              <button type="button" class="btn btn-primary btn-next">Next Step: Claim Voucher →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Contact Info -->
+          <div class="form-step" data-step="3" style="display: none;">
+            <h3 class="step-heading">Step 3 of 3: Contact Details</h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname" class="form-label">Full Name</label>
+                <input type="text" id="fname" name="name" class="form-input" placeholder="Your full name" required autocomplete="name" />
+                <span class="form-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="femail" class="form-label">Email Address</label>
+                <input type="email" id="femail" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email" />
+                <span class="form-error" role="alert"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fphone" class="form-label">Phone Number <span style="font-weight: 400; opacity: 0.7;">(optional)</span></label>
+                <input type="tel" id="fphone" name="phone" class="form-input" placeholder="+44 7700 900000" autocomplete="tel" />
+                <span class="form-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-actions form-actions-split">
+              <button type="button" class="btn btn-outline btn-prev">← Back</button>
+              <button type="submit" class="btn btn-primary" id="waitlistSubmitBtn">Claim My Voucher</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="logo footer-logo" aria-label="Archwy Home">ARCHWY</a>
+      <div class="footer-links">
+        <span class="footer-location">Winchester, England</span>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="terms.html" class="footer-link">Terms of Service</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 ARCHWY. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ── Back to Top Button ── -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <script src="script_experiment.js"></script>
+</body>
+
+</html>
