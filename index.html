@@ -801,6 +801,217 @@
     .photo-preview-item .remove-btn:hover {
       background: #C0392B;
     }
+
+    /* ─── Timeline "How Our Service Works" Redesign ─── */
+    .how-it-works {
+      background: var(--green-deep) !important;
+      color: #FFFFFF;
+      padding: 8rem 0 !important;
+    }
+
+    .how-it-works-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .timeline-container {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 55px; /* Alignment with center of 110px circles */
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      border-top: 2px dashed rgba(250, 247, 242, 0.25);
+      z-index: 1;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      z-index: 2;
+      position: relative;
+    }
+
+    .step-circle-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-circle {
+      width: 100%;
+      height: 100%;
+      background: #2D3E38; /* Lighter deep green for contrast */
+      border: 2.5px solid #FAF7F2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FAF7F2;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .step-circle svg {
+      width: 42px;
+      height: 42px;
+      stroke: #FAF7F2;
+      fill: none;
+    }
+
+    .step-number-badge {
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #C8963E; /* Gold step badge */
+      color: #FAF7F2;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 2.5px solid #2D3E38;
+    }
+
+    .step-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #FFFFFF !important;
+      line-height: 1.4;
+      max-width: 240px;
+      margin: 0;
+    }
+
+    @media (max-width: 850px) {
+      .timeline-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem !important; /* Tighter mobile vertical gap */
+      }
+
+      .timeline-line {
+        top: 42px !important; /* Center alignment of shrunken 84px circles */
+        bottom: 42px !important;
+        left: 50% !important;
+        right: auto !important;
+        width: 2px !important;
+        height: auto !important;
+        border-left: 2px dashed rgba(250, 247, 242, 0.25) !important;
+        border-top: none !important;
+        transform: translateX(-50%) !important;
+        z-index: 1;
+      }
+
+      .timeline-step {
+        width: 100%;
+      }
+
+      /* Shrink timeline circles and badges for organic phone balance */
+      .step-circle-wrapper {
+        width: 84px !important;
+        height: 84px !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .step-circle svg {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .step-number-badge {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 0.75rem !important;
+        border: 2px solid #2D3E38 !important;
+      }
+
+      .step-card-title {
+        font-size: 1.1rem !important;
+      }
+
+      /* Stack form rows on tablet and mobile viewports for spacious spacing */
+      .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin-bottom: 16px !important;
+      }
+    }
+
+    /* ─── Hero Job Starter Input Overrides ─── */
+    .hero-job-wrapper {
+      max-width: 680px;
+      margin: 2rem auto 0 auto;
+      text-align: center;
+    }
+
+    .hero-job-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(55, 74, 67, 0.08);
+      border: 1px solid rgba(55, 74, 67, 0.08);
+      margin-top: 1rem;
+    }
+
+    .hero-job-input {
+      width: 100%;
+      border: 1.5px solid rgba(55, 74, 67, 0.15);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      color: var(--green-deep);
+      background: #FAF7F2;
+      resize: none;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.3s ease;
+      line-height: 1.5;
+    }
+
+    .hero-job-input:focus {
+      border-color: #C8963E;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(200, 150, 62, 0.12);
+    }
+
+    .hero-job-btn {
+      width: 100% !important;
+      padding: 16px 32px !important;
+      font-size: 1.05rem !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 10px !important;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
   </style>
 </head>
 
@@ -844,12 +1055,12 @@
           A dedicated expert inspects your property and sources 2-3 competitive quotes from vetted local plumbers on your behalf.
         </p>
 
-        <!-- Interactive Postcode Checker -->
-        <div class="hero-search-wrapper">
-          <p class="hero-search-label">Find a trusted local plumber in Winchester in seconds:</p>
-          <div class="hero-search-box">
-            <input type="text" id="heroPostcode" class="hero-search-input" placeholder="Enter your postcode (e.g. SO23)" aria-label="Enter your postcode" />
-            <button type="button" id="heroCtaBtn" class="btn btn-primary hero-search-btn">Check Eligibility</button>
+        <!-- Interactive Job Starter -->
+        <div class="hero-search-wrapper hero-job-wrapper">
+          <p class="hero-search-label">Find a local tradesperson to help you:</p>
+          <div class="hero-job-box">
+            <textarea id="heroJobDescription" class="hero-job-input" placeholder="Describe your project or problem (e.g. Boiler is leaking, need a radiator relocated...)" rows="2" required></textarea>
+            <button type="button" id="heroCtaBtn" class="btn btn-primary hero-job-btn">Get Free Quotes</button>
           </div>
           <p class="hero-search-note">100% free quote-matching service for local homeowners.</p>
         </div>
@@ -861,40 +1072,59 @@
       <div class="container">
         <div class="how-it-works-header" data-animate="fade-up">
           <p class="section-eyebrow">The solution</p>
-          <h2 class="section-title">How Archwy Works</h2>
-          <p class="how-it-works-lead">
-            We’ve identified the common frustrations homeowners face when hiring tradesmen and created a simpler, more effective solution.
-          </p>
+          <h2 class="section-title">How Our Service Works</h2>
         </div>
 
-        <div class="steps-grid">
-          
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+
           <!-- Step 1 -->
-          <div class="step" data-animate="fade-up" data-delay="0">
-            <span class="step-number">01</span>
-            <h3 class="step-title">Tell us what you need</h3>
-            <p class="step-text">Connect with a plumbing & gas expert. We perform a single, independent assessment of your property to standardize your project scope.</p>
+          <div class="timeline-step" data-animate="fade-up" data-delay="0">
+            <div class="step-circle-wrapper">
+              <div class="step-circle">
+                <!-- Icon of a document/phone -->
+                <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                </svg>
+              </div>
+              <div class="step-number-badge">1</div>
+            </div>
+            <div class="timeline-text">
+              <h3 class="step-card-title">Post your job for free</h3>
+            </div>
           </div>
 
-          <!-- Step 2 (Highlighted) -->
-          <div class="step step-highlighted" data-animate="fade-up" data-delay="150">
-            <span class="step-number">02</span>
-            <h3 class="step-title">We handle the legwork</h3>
-            <p class="step-text">We source 2–3 competitive quotes from our vetted network on your behalf, saving you hours of phone calls, site visits, and pushy sales reps.</p>
+          <!-- Step 2 -->
+          <div class="timeline-step" data-animate="fade-up" data-delay="150">
+            <div class="step-circle-wrapper">
+              <div class="step-circle">
+                <!-- Icon of two figures shaking hands -->
+                <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                </svg>
+              </div>
+              <div class="step-number-badge">2</div>
+            </div>
+            <div class="timeline-text">
+              <h3 class="step-card-title">Actively matches with tradesmen</h3>
+            </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="step" data-animate="fade-up" data-delay="300">
-            <span class="step-number">03</span>
-            <h3 class="step-title">Choose with confidence</h3>
-            <p class="step-text">Review your standardized, competitive quotes side-by-side. Pick the perfect option for your budget and timeline with zero sales pressure.</p>
+          <div class="timeline-step" data-animate="fade-up" data-delay="300">
+            <div class="step-circle-wrapper">
+              <div class="step-circle">
+                <!-- Icon of a checkmark in a circle -->
+                <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+              </div>
+              <div class="step-number-badge">3</div>
+            </div>
+            <div class="timeline-text">
+              <h3 class="step-card-title">Receive trusted options</h3>
+            </div>
           </div>
-          
-        </div>
-        <div class="steps-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
         </div>
       </div>
     </section>
@@ -1146,28 +1376,8 @@
           <div class="form-step" data-step="2" style="display: none;">
             <h3 class="step-heading">Step 2 of 2: Sourcing Details</h3>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fname" class="form-label">Full Name</label>
-                <input type="text" id="fname" name="name" class="form-input" placeholder="Your full name" required autocomplete="name" />
-                <span class="form-error" role="alert"></span>
-              </div>
-              <div class="form-group">
-                <label for="femail" class="form-label">Email Address</label>
-                <input type="email" id="femail" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email" />
-                <span class="form-error" role="alert"></span>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="fphone" class="form-label">Phone Number <span style="font-weight: 400; opacity: 0.7;">(optional)</span></label>
-                <input type="tel" id="fphone" name="phone" class="form-input" placeholder="+44 7700 900000" autocomplete="tel" />
-                <span class="form-error" role="alert"></span>
-              </div>
-            </div>
-
             <div class="form-group">
-              <label class="form-label" for="q_extra">What plumbing or gas job do you need help with?</label>
+              <label class="form-label" for="q_extra">Describe a project or problem...</label>
               <textarea id="q_extra" name="q_extra" class="form-input form-textarea" placeholder="e.g. Boiler is leaking, radiator needs moving, quote for a bathroom remodel..." rows="4" required></textarea>
               <span class="form-error" role="alert"></span>
             </div>
@@ -1183,6 +1393,56 @@
                 <p class="upload-limit">Up to 5 photos (max 5MB each)</p>
               </div>
               <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fjobstart" class="form-label">When would you like the job to start?</label>
+                <select id="fjobstart" name="job_start" class="form-input" required>
+                  <option value="" disabled selected>Select timeline...</option>
+                  <option value="Urgent (under 24 hours)">Urgent (under 24 hours)</option>
+                  <option value="Within 48 hours">Within 48 hours</option>
+                  <option value="Within a week">Within a week</option>
+                  <option value="Just budgeting / future planning">Just budgeting / future planning</option>
+                </select>
+                <span class="form-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="fjobstage" class="form-label">What stage are you at?</label>
+                <select id="fjobstage" name="job_stage" class="form-input" required>
+                  <option value="" disabled selected>Select status...</option>
+                  <option value="Ready to hire tradesperson">Ready to hire tradesperson</option>
+                  <option value="Looking for quotes to compare">Looking for quotes to compare</option>
+                  <option value="Feasibility study / budgeting">Feasibility study / budgeting</option>
+                </select>
+                <span class="form-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ffirstname" class="form-label">First Name</label>
+                <input type="text" id="ffirstname" name="first_name" class="form-input" placeholder="First name" required />
+                <span class="form-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="flastname" class="form-label">Last Name</label>
+                <input type="text" id="flastname" name="last_name" class="form-input" placeholder="Last name" required />
+                <span class="form-error" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="femail" class="form-label">Email Address</label>
+                <input type="email" id="femail" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email" />
+                <span class="form-error" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="fphone" class="form-label">Phone Number</label>
+                <input type="tel" id="fphone" name="phone" class="form-input" placeholder="e.g. 07700 900000" required autocomplete="tel" />
+                <span class="form-error" role="alert"></span>
+              </div>
             </div>
 
             <div class="form-actions form-actions-split">
