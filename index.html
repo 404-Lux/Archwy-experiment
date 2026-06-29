@@ -704,8 +704,102 @@
       .step-highlighted {
         transform: none !important;
       }
+    }
 
+    /* ─── Premium Drag-and-Drop Photo Uploader ─── */
+    .photo-upload-zone {
+      border: 2px dashed rgba(55, 74, 67, 0.2);
+      border-radius: 12px;
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      background: #FFFFFF;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
 
+    .photo-upload-zone:hover, .photo-upload-zone.dragover {
+      border-color: #C8963E;
+      background: rgba(200, 150, 62, 0.03);
+    }
+
+    .photo-upload-zone .upload-icon {
+      color: #C8963E;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-upload-zone:hover .upload-icon {
+      transform: translateY(-4px);
+    }
+
+    .photo-upload-zone .upload-text {
+      font-size: 0.95rem;
+      color: #374A43;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .photo-upload-zone .upload-browse {
+      color: #C8963E;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .photo-upload-zone .upload-limit {
+      font-size: 0.8rem;
+      color: #7A8B84;
+      margin: 0;
+    }
+
+    .photo-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .photo-preview-item {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(55, 74, 67, 0.15);
+      background: #FAFAFA;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .photo-preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-preview-item .remove-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(55, 74, 67, 0.8);
+      color: #FFF;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      transition: background 0.3s;
+    }
+
+    .photo-preview-item .remove-btn:hover {
+      background: #C0392B;
     }
   </style>
 </head>
@@ -726,14 +820,14 @@
         <li><a href="#testimonials" class="nav-link" data-section="testimonials">Reviews</a></li>
         <li><a href="#meet-founder" class="nav-link" data-section="meet-founder">Founder</a></li>
         <li><a href="#guarantee" class="nav-link" data-section="guarantee">Guarantee</a></li>
-        <li class="nav-mobile-cta-wrap"><a href="#waitlist" class="btn btn-primary nav-mobile-cta">Claim Voucher</a></li>
+        <li class="nav-mobile-cta-wrap"><a href="#waitlist" class="btn btn-primary nav-mobile-cta">Find a Plumber</a></li>
         <li class="nav-mobile-footer">
           <div class="nav-mobile-footer-location">Winchester, England</div>
           <div class="nav-mobile-footer-logo">ARCHWY</div>
           <div class="nav-mobile-footer-copy">&copy; 2026 ARCHWY. All rights reserved.</div>
         </li>
       </ul>
-      <a href="#waitlist" class="btn btn-nav-cta" id="navCtaBtn">Claim Voucher</a>
+      <a href="#waitlist" class="btn btn-nav-cta" id="navCtaBtn">Find a Plumber</a>
     </nav>
   </header>
 
@@ -752,12 +846,12 @@
 
         <!-- Interactive Postcode Checker -->
         <div class="hero-search-wrapper">
-          <p class="hero-search-label">Claim your free £99 assessment voucher in seconds:</p>
+          <p class="hero-search-label">Find a trusted local plumber in Winchester in seconds:</p>
           <div class="hero-search-box">
             <input type="text" id="heroPostcode" class="hero-search-input" placeholder="Enter your postcode (e.g. SO23)" aria-label="Enter your postcode" />
             <button type="button" id="heroCtaBtn" class="btn btn-primary hero-search-btn">Check Eligibility</button>
           </div>
-          <p class="hero-search-note">Only 50 complimentary vouchers available for Winchester residents.</p>
+          <p class="hero-search-note">100% free quote-matching service for local homeowners.</p>
         </div>
       </div>
     </section>
@@ -969,7 +1063,7 @@
             </div>
 
             <div class="meet-founder-actions-split">
-              <a href="#waitlist" class="btn btn-primary">Claim your voucher →</a>
+              <a href="#waitlist" class="btn btn-primary">Find a Plumber →</a>
             </div>
           </div>
         </div>
@@ -994,18 +1088,18 @@
 
           <div class="trust-pricing-feature">
             <div class="pricing-badge-row">
-              <span class="pricing-huge-number">£99</span>
+              <span class="pricing-huge-number">FREE</span>
               <div class="pricing-badge-details">
-                <span class="pricing-badge-label">Standard Assessment Value</span>
-                <span class="pricing-badge-promo">Complimentary for First 50 Signups</span>
+                <span class="pricing-badge-label">Homeowner Matchmaking</span>
+                <span class="pricing-badge-promo">100% Free Sourcing Service</span>
               </div>
             </div>
             <p class="trust-guarantee-text">
-              To preserve our strict quality standards during our initial rollout, complimentary inspections are <strong>strictly limited to the first 50 registered homeowners</strong> in Winchester.
+              No hidden fees, no matching charges, and no commissions. We inspect your project details and source competitive quotes from our vetted local plumbers <strong>entirely free of charge</strong>.
             </p>
           </div>
 
-          <a href="#waitlist" class="btn btn-light" style="margin-top: 1rem;">Claim your voucher →</a>
+          <a href="#waitlist" class="btn btn-light" style="margin-top: 1rem;">Get Free Quotes →</a>
         </div>
       </div>
     </section>
@@ -1013,14 +1107,14 @@
     <!-- ══════════════════════════════════ LAUNCH VOUCHER FORM ══ -->
     <section class="waitlist section" id="waitlist">
       <div class="container waitlist-inner">
-        <h2 class="section-title waitlist-title" data-animate="fade-up">Secure Your Free £99 Assessment Voucher</h2>
+        <h2 class="section-title waitlist-title" data-animate="fade-up">Find a Vetted Local Plumber</h2>
         <p class="waitlist-sub" data-animate="fade-up">
-          We are launching soon in Winchester! Register below to claim one of 50 complimentary expert inspections and quote-sourcing vouchers.
+          Winchester's independent matching network for verified plumbers and gas safe engineers. Sourcing is 100% free for homeowners.
         </p>
 
         <div class="waitlist-info-box" data-animate="fade-up">
           <p>
-            <strong>Limited Launch Offer:</strong> To guarantee high service quality, complimentary vouchers are strictly limited to the first 50 registered homeowners in our Winchester service area.
+            <strong>Free Sourcing Service:</strong> Describe your job and upload photos. We will match you with 2-3 vetted local plumbing experts who will contact you with competitive quotes.
           </p>
         </div>
 
@@ -1028,7 +1122,7 @@
 
           <!-- STEP 1: Eligibility & Location -->
           <div class="form-step active" data-step="1">
-            <h3 class="step-heading">Step 1 of 3: Check Eligibility</h3>
+            <h3 class="step-heading">Step 1 of 2: Check Eligibility</h3>
 
             <div class="form-row">
               <div class="form-group">
@@ -1044,51 +1138,13 @@
             </div>
 
             <div class="form-actions">
-              <button type="button" class="btn btn-primary btn-next">Next Step: Project Details →</button>
+              <button type="button" class="btn btn-primary btn-next">Next Step: Sourcing Details →</button>
             </div>
           </div>
 
-          <!-- STEP 2: Project Info -->
+          <!-- STEP 2: Sourcing Details -->
           <div class="form-step" data-step="2" style="display: none;">
-            <h3 class="step-heading">Step 2 of 3: Upcoming Projects</h3>
-
-            <div class="form-group question-group">
-              <label class="question-label">What plumbing or gas project do you have coming up?</label>
-              <div class="radio-pill-group vertical-pills">
-                <label class="radio-pill">
-                  <input type="radio" name="project_type" value="Boiler Replacement / Upgrade" required>
-                  <span class="pill-text">Boiler Replacement or Upgrade</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="project_type" value="Bathroom Remodel / Refurbish">
-                  <span class="pill-text">Bathroom Remodel or Refurbish</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="project_type" value="General Plumbing Issue / Repair">
-                  <span class="pill-text">General Plumbing Issue or Repair</span>
-                </label>
-                <label class="radio-pill">
-                  <input type="radio" name="project_type" value="None - Just securing my voucher for future use">
-                  <span class="pill-text">None — Just securing my voucher for future use</span>
-                </label>
-              </div>
-              <span class="form-error" role="alert"></span>
-            </div>
-
-            <div class="form-group question-group">
-              <label class="question-label" for="q_extra">Briefly describe the job (optional)</label>
-              <textarea id="q_extra" name="q_extra" class="form-input form-textarea" placeholder="e.g., Boiler is old and needs replacing, bathroom remodel ideas..." rows="3"></textarea>
-            </div>
-
-            <div class="form-actions form-actions-split">
-              <button type="button" class="btn btn-outline btn-prev">← Back</button>
-              <button type="button" class="btn btn-primary btn-next">Next Step: Claim Voucher →</button>
-            </div>
-          </div>
-
-          <!-- STEP 3: Contact Info -->
-          <div class="form-step" data-step="3" style="display: none;">
-            <h3 class="step-heading">Step 3 of 3: Contact Details</h3>
+            <h3 class="step-heading">Step 2 of 2: Sourcing Details</h3>
 
             <div class="form-row">
               <div class="form-group">
@@ -1110,9 +1166,28 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label class="form-label" for="q_extra">What plumbing or gas job do you need help with?</label>
+              <textarea id="q_extra" name="q_extra" class="form-input form-textarea" placeholder="e.g. Boiler is leaking, radiator needs moving, quote for a bathroom remodel..." rows="4" required></textarea>
+              <span class="form-error" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Upload photos of the issue <span style="font-weight: 400; opacity: 0.7;">(optional)</span></label>
+              <div class="photo-upload-zone" id="photoUploadZone">
+                <input type="file" id="fileInput" name="photos" accept="image/*" multiple style="display: none;" />
+                <svg class="upload-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p class="upload-text">Drag & drop images here, or <span class="upload-browse">browse files</span></p>
+                <p class="upload-limit">Up to 5 photos (max 5MB each)</p>
+              </div>
+              <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+            </div>
+
             <div class="form-actions form-actions-split">
               <button type="button" class="btn btn-outline btn-prev">← Back</button>
-              <button type="submit" class="btn btn-primary" id="waitlistSubmitBtn">Claim My Voucher</button>
+              <button type="submit" class="btn btn-primary" id="waitlistSubmitBtn">Submit Free Request</button>
             </div>
           </div>
 
