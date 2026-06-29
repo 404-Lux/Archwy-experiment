@@ -88,14 +88,84 @@
   if (form) {
     const steps = Array.from(form.querySelectorAll('.form-step'));
     let currentStep = 0;
+    let uploadedFiles = []; // Stores file objects for submission
+
+    const fileInput = document.getElementById('fileInput');
+    const photoUploadZone = document.getElementById('photoUploadZone');
+    const photoPreviewGrid = document.getElementById('photoPreviewGrid');
+
+    // Drag-and-drop / File upload logic
+    if (photoUploadZone && fileInput && photoPreviewGrid) {
+      photoUploadZone.addEventListener('click', () => fileInput.click());
+
+      ['dragenter', 'dragover'].forEach(eventName => {
+        photoUploadZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          photoUploadZone.classList.add('dragover');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        photoUploadZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          photoUploadZone.classList.remove('dragover');
+        }, false);
+      });
+
+      photoUploadZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        handleFiles(e.target.files);
+      });
+
+      function handleFiles(files) {
+        const maxFiles = 5;
+        const fileList = Array.from(files).filter(file => file.type.startsWith('image/'));
+        
+        if (uploadedFiles.length + fileList.length > maxFiles) {
+          alert('You can upload a maximum of 5 photos.');
+          return;
+        }
+
+        fileList.forEach(file => {
+          if (file.size > 5 * 1024 * 1024) {
+            alert(`File "${file.name}" exceeds the 5MB limit.`);
+            return;
+          }
+
+          uploadedFiles.push(file);
+
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const previewItem = document.createElement('div');
+            previewItem.className = 'photo-preview-item';
+            previewItem.innerHTML = `
+              <img src="${e.target.result}" alt="${file.name}" />
+              <button type="button" class="remove-btn">&times;</button>
+            `;
+            
+            previewItem.querySelector('.remove-btn').addEventListener('click', (ev) => {
+              ev.stopPropagation();
+              const idx = uploadedFiles.indexOf(file);
+              if (idx > -1) uploadedFiles.splice(idx, 1);
+              previewItem.remove();
+            });
+
+            photoPreviewGrid.appendChild(previewItem);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+    }
 
     function showError(input, msg) {
       input.classList.add('error');
       let container = input.closest('.form-group') || input.parentElement;
       let err = container.querySelector('.form-error');
-      if (!err && input.closest('.radio-pill-group')) {
-        err = input.closest('.question-group').querySelector('.form-error');
-      }
       if (err) err.textContent = msg;
     }
 
@@ -103,18 +173,8 @@
       input.classList.remove('error');
       let container = input.closest('.form-group') || input.parentElement;
       let err = container.querySelector('.form-error');
-      if (!err && input.closest('.radio-pill-group')) {
-        err = input.closest('.question-group').querySelector('.form-error');
-      }
       if (err) err.textContent = '';
     }
-
-    // Clear errors on change / input
-    form.querySelectorAll('input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', (e) => {
-        clearError(e.target);
-      });
-    });
 
     form.querySelectorAll('.form-input').forEach(input => {
       input.addEventListener('input', () => {
@@ -125,7 +185,7 @@
     function validateStep(stepIndex) {
       const step = steps[stepIndex];
       let valid = true;
-      
+
       // Validate text inputs
       const textInputs = step.querySelectorAll('.form-input[required]');
       textInputs.forEach(input => {
@@ -141,24 +201,11 @@
         }
       });
 
-      // Validate radio groups
-      const questionGroups = step.querySelectorAll('.question-group');
-      questionGroups.forEach(group => {
-        const requiredRadios = group.querySelectorAll('input[type="radio"][required]');
-        if (requiredRadios.length > 0) {
-          const name = requiredRadios[0].name;
-          const checked = group.querySelector(`input[name="${name}"]:checked`);
-          if (!checked) {
-            showError(requiredRadios[0], 'Please select one option.');
-            valid = false;
-          }
-        }
-      });
       // Winchester Postcode Check (Option A)
       if (stepIndex === 0 && valid) {
         const postcodeVal = form.querySelector('[name="postcode"]').value.trim().toUpperCase().replace(/\s+/g, '');
         const isWinchester = /^SO2[1-4]/.test(postcodeVal);
-        
+
         let infoBox = form.querySelector('.expansion-notice');
         if (!isWinchester) {
           if (!infoBox) {
@@ -192,7 +239,7 @@
         }
       });
       currentStep = index;
-      
+
       // Scroll to top of the form
       const formTop = form.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: formTop, behavior: 'smooth' });
@@ -206,8 +253,6 @@
           if (typeof gtag === 'function') {
             if (currentStep === 0) {
               gtag('event', 'step_1_complete', { 'event_category': 'funnel' });
-            } else if (currentStep === 1) {
-              gtag('event', 'step_2_complete', { 'event_category': 'funnel' });
             }
           }
           showStep(currentStep + 1);
@@ -223,24 +268,41 @@
     });
 
     // Form submission
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const isValid = validateStep(currentStep);
       if (!isValid) return;
 
       submitBtn.textContent = 'Submitting…';
       submitBtn.disabled = true;
 
+      // Asynchronously base64 encode any uploaded files
+      const base64Files = await Promise.all(
+        uploadedFiles.map(file => {
+          return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              resolve({
+                name: file.name,
+                type: file.type,
+                base64: ev.target.result.split(',')[1]
+              });
+            };
+            reader.readAsDataURL(file);
+          });
+        })
+      );
+
       // Collect all redesigned form data
       const payload = {
-        name:         (form.querySelector('[name="name"]')         || {}).value || '',
-        email:        (form.querySelector('[name="email"]')        || {}).value || '',
-        phone:        (form.querySelector('[name="phone"]')        || {}).value || '',
-        postcode:     (form.querySelector('[name="postcode"]')     || {}).value || '',
-        location:     (form.querySelector('[name="location"]')     || {}).value || '',
-        project_type: (form.querySelector('[name="project_type"]:checked') || {}).value || '',
-        notes:        (form.querySelector('[name="q_extra"]')      || {}).value || ''
+        name: (form.querySelector('[name="name"]') || {}).value || '',
+        email: (form.querySelector('[name="email"]') || {}).value || '',
+        phone: (form.querySelector('[name="phone"]') || {}).value || '',
+        postcode: (form.querySelector('[name="postcode"]') || {}).value || '',
+        location: (form.querySelector('[name="location"]') || {}).value || '',
+        notes: (form.querySelector('[name="q_extra"]') || {}).value || '',
+        attachments: JSON.stringify(base64Files) // Attached image data passed as a JSON string
       };
 
       console.log('Experimental Form data payload:', payload);
@@ -255,35 +317,35 @@
         mode: 'no-cors',
         body: params
       })
-      .then(() => {
-        if (typeof gtag === 'function') {
-          gtag('event', 'form_submission', { 'event_category': 'funnel' });
-        }
-        // Show success screen
-        form.innerHTML = `
+        .then(() => {
+          if (typeof gtag === 'function') {
+            gtag('event', 'form_submission', { 'event_category': 'funnel' });
+          }
+          // Show success screen
+          form.innerHTML = `
           <div class="waitlist-success">
             <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="32" cy="32" r="32" fill="#E8F0EC"/>
               <path d="M26 34L30 38L40 26" stroke="#374A43" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h3>You're on the list!</h3>
-            <p>Thank you. Your voucher is secured. We will send a confirmation welcome email within 1-5 business days.</p>
+            <h3>Request Submitted!</h3>
+            <p>Thank you. Your free plumber sourcing request has been received. We will analyze your details and get back to you by email shortly.</p>
           </div>
         `;
-      })
-      .catch((error) => {
-        console.error('Fetch POST failed:', error);
-        submitBtn.textContent = 'Claim My Voucher';
-        submitBtn.disabled = false;
-        let errEl = form.querySelector('.submit-error');
-        if (!errEl) {
-          errEl = document.createElement('p');
-          errEl.className = 'submit-error';
-          errEl.style.cssText = 'color:#C0392B;margin-top:16px;font-size:0.875rem;text-align:center;';
-          form.querySelector('.form-actions').appendChild(errEl);
-        }
-        errEl.textContent = 'Something went wrong. Please check your connection and try again.';
-      });
+        })
+        .catch((error) => {
+          console.error('Fetch POST failed:', error);
+          submitBtn.textContent = 'Submit Free Request';
+          submitBtn.disabled = false;
+          let errEl = form.querySelector('.submit-error');
+          if (!errEl) {
+            errEl = document.createElement('p');
+            errEl.className = 'submit-error';
+            errEl.style.cssText = 'color:#C0392B;margin-top:16px;font-size:0.875rem;text-align:center;';
+            form.querySelector('.form-actions').appendChild(errEl);
+          }
+          errEl.textContent = 'Something went wrong. Please check your connection and try again.';
+        });
     });
   }
 
@@ -295,19 +357,19 @@
   if (heroCtaBtn && heroPostcode && formPostcode) {
     heroCtaBtn.addEventListener('click', () => {
       const code = heroPostcode.value.trim();
-      
+
       if (code) {
         formPostcode.value = code;
         formPostcode.classList.remove('error');
         const errSpan = formPostcode.nextElementSibling;
         if (errSpan) errSpan.textContent = '';
-        
+
         const waitlistSection = document.getElementById('waitlist');
         if (waitlistSection) {
           const offsetTop = waitlistSection.getBoundingClientRect().top + window.scrollY - 80;
           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
-        
+
         setTimeout(() => {
           const nextBtnStep1 = document.querySelector('[data-step="1"] .btn-next');
           if (nextBtnStep1) {
@@ -438,12 +500,12 @@
           const videoHeight = rect.height;
           const viewportHeight = window.innerHeight;
           const headerHeight = 80;
-          
+
           let targetScroll = absoluteTop - headerHeight;
           if (videoHeight < (viewportHeight - headerHeight)) {
             targetScroll = absoluteTop - headerHeight - ((viewportHeight - headerHeight - videoHeight) / 2);
           }
-          
+
           window.scrollTo({
             top: targetScroll,
             behavior: 'smooth'
@@ -468,7 +530,7 @@
         dot.classList.toggle('active', idx === index);
       });
     }, { passive: true });
-    
+
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
         const cards = grid.querySelectorAll('.testimonial-card');
@@ -520,7 +582,7 @@
       const isExpanded = founderBio.classList.contains('expanded');
       founderBio.classList.toggle('expanded', !isExpanded);
       toggleFounderBtn.setAttribute('aria-expanded', String(!isExpanded));
-      
+
       if (isExpanded) {
         toggleFounderBtn.innerHTML = `Read Corban's Message <span class="arrow">↓</span>`;
       } else {
@@ -532,35 +594,35 @@
   /* ── Testimonials dynamic truncation on mobile ── */
   const quotes = document.querySelectorAll('.quote-text');
   const quoteLimit = 110;
-  
+
   if (window.innerWidth <= 850) {
     quotes.forEach(quote => {
       const fullText = quote.innerHTML.trim();
       const plainText = quote.textContent.trim();
-      
+
       if (plainText.length > quoteLimit) {
         let truncateIndex = quoteLimit;
         while (truncateIndex > 0 && plainText[truncateIndex] !== ' ') {
           truncateIndex--;
         }
         if (truncateIndex === 0) truncateIndex = quoteLimit;
-        
+
         let suffix = '...';
         if (plainText.startsWith('“') || plainText.startsWith('"')) {
           suffix = '...”';
         }
-        
+
         const truncatedText = plainText.slice(0, truncateIndex).trim() + suffix;
         quote.setAttribute('data-full', fullText);
         quote.setAttribute('data-truncated', truncatedText);
-        
+
         quote.textContent = truncatedText;
-        
+
         const seeMoreBtn = document.createElement('span');
         seeMoreBtn.className = 'see-more-btn';
         seeMoreBtn.textContent = 'see more';
         quote.appendChild(seeMoreBtn);
-        
+
         seeMoreBtn.addEventListener('click', (e) => {
           e.stopPropagation();
           const isExpanded = quote.classList.contains('expanded');
