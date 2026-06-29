@@ -66,6 +66,7 @@
           if (el._animTimeout) clearTimeout(el._animTimeout);
           el._animTimeout = setTimeout(() => {
             el.classList.add('is-visible');
+            animObserver.unobserve(el); // Animate once and stay visible permanently
             delete el._animTimeout;
           }, delay);
         } else {
@@ -73,11 +74,10 @@
             clearTimeout(el._animTimeout);
             delete el._animTimeout;
           }
-          el.classList.remove('is-visible');
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.05 } // Triggers slightly earlier for smoother scrolling dynamics
   );
   animatedEls.forEach(el => animObserver.observe(el));
 
@@ -125,7 +125,7 @@
       function handleFiles(files) {
         const maxFiles = 5;
         const fileList = Array.from(files).filter(file => file.type.startsWith('image/'));
-        
+
         if (uploadedFiles.length + fileList.length > maxFiles) {
           alert('You can upload a maximum of 5 photos.');
           return;
@@ -147,7 +147,7 @@
               <img src="${e.target.result}" alt="${file.name}" />
               <button type="button" class="remove-btn">&times;</button>
             `;
-            
+
             previewItem.querySelector('.remove-btn').addEventListener('click', (ev) => {
               ev.stopPropagation();
               const idx = uploadedFiles.indexOf(file);
@@ -296,11 +296,14 @@
 
       // Collect all redesigned form data
       const payload = {
-        name: (form.querySelector('[name="name"]') || {}).value || '',
+        first_name: (form.querySelector('[name="first_name"]') || {}).value || '',
+        last_name: (form.querySelector('[name="last_name"]') || {}).value || '',
         email: (form.querySelector('[name="email"]') || {}).value || '',
         phone: (form.querySelector('[name="phone"]') || {}).value || '',
         postcode: (form.querySelector('[name="postcode"]') || {}).value || '',
         location: (form.querySelector('[name="location"]') || {}).value || '',
+        job_start: (form.querySelector('[name="job_start"]') || {}).value || '',
+        job_stage: (form.querySelector('[name="job_stage"]') || {}).value || '',
         notes: (form.querySelector('[name="q_extra"]') || {}).value || '',
         attachments: JSON.stringify(base64Files) // Attached image data passed as a JSON string
       };
@@ -349,37 +352,38 @@
     });
   }
 
-  /* ── Interactive Glue Logic for Hero Postcode Check ── */
-  const heroPostcode = document.getElementById('heroPostcode');
+  /* ── Interactive Glue Logic for Hero Job Description Starter ── */
+  const heroJobDescription = document.getElementById('heroJobDescription');
   const heroCtaBtn = document.getElementById('heroCtaBtn');
+  const formNotes = document.getElementById('q_extra');
   const formPostcode = document.getElementById('fpostcode');
 
-  if (heroCtaBtn && heroPostcode && formPostcode) {
+  if (heroCtaBtn && heroJobDescription && formNotes) {
     heroCtaBtn.addEventListener('click', () => {
-      const code = heroPostcode.value.trim();
+      const jobDesc = heroJobDescription.value.trim();
 
-      if (code) {
-        formPostcode.value = code;
-        formPostcode.classList.remove('error');
-        const errSpan = formPostcode.nextElementSibling;
+      if (jobDesc) {
+        // Pre-fill the form's job description field
+        formNotes.value = jobDesc;
+        formNotes.classList.remove('error');
+        const errSpan = formNotes.closest('.form-group').querySelector('.form-error');
         if (errSpan) errSpan.textContent = '';
 
+        // Smooth scroll to waitlist form section (Step 1 postcode checker)
         const waitlistSection = document.getElementById('waitlist');
         if (waitlistSection) {
           const offsetTop = waitlistSection.getBoundingClientRect().top + window.scrollY - 80;
           window.scrollTo({ top: offsetTop, behavior: 'smooth' });
         }
 
-        setTimeout(() => {
-          const nextBtnStep1 = document.querySelector('[data-step="1"] .btn-next');
-          if (nextBtnStep1) {
-            nextBtnStep1.click();
-          }
-        }, 800);
+        // Focus on the postcode input to guide them to check eligibility
+        if (formPostcode) {
+          setTimeout(() => formPostcode.focus(), 800);
+        }
       } else {
-        heroPostcode.focus();
-        heroPostcode.style.borderColor = '#FF5252';
-        setTimeout(() => heroPostcode.style.borderColor = '', 1000);
+        heroJobDescription.focus();
+        heroJobDescription.style.borderColor = '#FF5252';
+        setTimeout(() => heroJobDescription.style.borderColor = '', 1000);
       }
     });
   }
