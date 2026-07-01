@@ -25,7 +25,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css?v=2" />
-  <link rel="icon" type="image/png" href="favicon.png?v=3" />
+  <link rel="icon" type="image/png" href="img/favicon.png?v=3" />
 
   <!-- Schema.org Structured Data for Google/SEO -->
   <script type="application/ld+json">
@@ -238,7 +238,7 @@
       margin-top: 2rem;
     }
 
-    .meet-founder-bio-short p {
+    .meet-founder-bio p {
       font-family: 'Inter', sans-serif;
       font-size: 1.15rem;
       line-height: 1.7;
@@ -274,7 +274,22 @@
       letter-spacing: 0.05em;
     }
 
+    .meet-founder-header {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .meet-founder-header .section-eyebrow {
+      margin-bottom: 0.5rem;
+    }
+    .meet-founder-header .section-title {
+      margin-top: 0;
+    }
+
     @media (max-width: 991px) {
+      .meet-founder-header {
+        text-align: center !important;
+        margin-bottom: 2rem;
+      }
       .meet-founder-inner-split {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -602,24 +617,24 @@
       }
     }
 
-    /* ─── How It Works (Solution Section) Green Theme Overrides ─── */
+    /* ─── How It Works (Solution Section) Light Theme Overrides ─── */
     .how-it-works {
-      background: var(--green-deep) !important;
-      color: #FFFFFF;
-      padding: 8rem 0; /* Standard high-end padding spacing */
+      background: #FAF7F2 !important; /* Cream light background color */
+      color: #2D3E38 !important; /* Dark green text */
+      padding: 8rem 0 !important; /* Standard high-end padding spacing */
     }
 
     .how-it-works-header .section-eyebrow {
-      color: #C8963E !important; /* Premium Gold Eyebrow */
+      color: #5c6e66 !important; /* Muted dark green/grey eyebrow, no yellow! */
       font-weight: 600;
     }
 
     .how-it-works-header .section-title {
-      color: #FFFFFF !important;
+      color: #2D3E38 !important; /* Dark green title */
     }
 
     .how-it-works-lead {
-      color: #FAF7F2 !important;
+      color: var(--text-muted) !important;
       opacity: 0.85;
     }
 
@@ -803,11 +818,7 @@
     }
 
     /* ─── Timeline "How Our Service Works" Redesign ─── */
-    .how-it-works {
-      background: var(--green-deep) !important;
-      color: #FFFFFF;
-      padding: 8rem 0 !important;
-    }
+
 
     .how-it-works-header {
       text-align: center;
@@ -831,7 +842,7 @@
       left: 12%;
       right: 12%;
       height: 2px;
-      border-top: 2px dashed rgba(250, 247, 242, 0.25);
+      border-top: 2px dashed rgba(45, 62, 56, 0.25); /* Dark green dashed connecting line */
       z-index: 1;
     }
 
@@ -855,13 +866,13 @@
     .step-circle {
       width: 100%;
       height: 100%;
-      background: #2D3E38; /* Lighter deep green for contrast */
-      border: 2.5px solid #FAF7F2;
+      background: #2D3E38; /* Dark green inside circles */
+      border: 2.5px solid #FFFFFF; /* Crisp white border to stand out */
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FAF7F2;
+      color: #FAF7F2; /* Cream icons */
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       transition: all 0.3s ease;
     }
@@ -869,7 +880,7 @@
     .step-circle svg {
       width: 42px;
       height: 42px;
-      stroke: #FAF7F2;
+      stroke: #FAF7F2; /* Cream icon outlines */
       fill: none;
     }
 
@@ -878,8 +889,8 @@
       bottom: -2px;
       left: 50%;
       transform: translateX(-50%);
-      background: #C8963E; /* Gold step badge */
-      color: #FAF7F2;
+      background: #2D3E38; /* Dark green step badge background */
+      color: #FFFFFF; /* White number text */
       width: 28px;
       height: 28px;
       border-radius: 50%;
@@ -889,14 +900,14 @@
       font-family: var(--font-sans);
       font-size: 0.85rem;
       font-weight: 700;
-      border: 2.5px solid #2D3E38;
+      border: 2.5px solid #FAF7F2; /* Cream outline matching background */
     }
 
     .step-card-title {
       font-family: var(--font-serif);
       font-size: 1.25rem;
       font-weight: 600;
-      color: #FFFFFF !important;
+      color: #2D3E38 !important; /* Dark green text for readability */
       line-height: 1.4;
       max-width: 240px;
       margin: 0;
@@ -916,7 +927,7 @@
         right: auto !important;
         width: 2px !important;
         height: auto !important;
-        border-left: 2px dashed rgba(250, 247, 242, 0.25) !important;
+        border-left: 2px dashed rgba(45, 62, 56, 0.25) !important; /* Dark green dashed connecting line on mobile */
         border-top: none !important;
         transform: translateX(-50%) !important;
         z-index: 1;
@@ -943,6 +954,8 @@
         height: 22px !important;
         font-size: 0.75rem !important;
         border: 2px solid #2D3E38 !important;
+        background: #2D3E38 !important; /* Force dark green background on mobile */
+        color: #FFFFFF !important; /* Force white text on mobile */
       }
 
       .step-card-title {
@@ -957,39 +970,63 @@
       }
     }
 
+    /* ─── Hero Spacing, Heights & Font Sizes ─── */
+    .hero-content {
+      gap: 1rem !important; /* Tighten flex gap to prevent large vertical spaces */
+    }
+
+    .hero-content .hero-welcome {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .hero-content .hero-heading {
+      margin-top: 0 !important;
+      margin-bottom: 0.25rem !important;
+      line-height: 1.15 !important;
+      font-size: clamp(1.85rem, 3.2vw, 2.75rem) !important;
+    }
+
+    .hero-content .hero-sub {
+      margin-top: 0 !important;
+      margin-bottom: 0.5rem !important;
+      line-height: 1.65 !important;
+      max-width: 520px !important;
+    }
+
     /* ─── Hero Job Starter Input Overrides ─── */
     .hero-job-wrapper {
-      max-width: 680px;
-      margin: 2rem auto 0 auto;
-      text-align: center;
+      width: 100%;
+      margin: 1.5rem 0 0 0;
+      text-align: left;
     }
 
     .hero-job-box {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       background: #FFFFFF;
-      padding: 1.5rem;
+      padding: 1.25rem;
       border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(55, 74, 67, 0.08);
+      box-shadow: 0 10px 30px rgba(55, 74, 67, 0.08);
       border: 1px solid rgba(55, 74, 67, 0.08);
-      margin-top: 1rem;
+      margin-top: 0.75rem;
     }
 
     .hero-job-input {
       width: 100%;
       border: 1.5px solid rgba(55, 74, 67, 0.15);
       border-radius: 10px;
-      padding: 16px;
+      padding: 12px 16px;
       font-family: var(--font-sans);
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--green-deep);
       background: #FAF7F2;
       resize: none;
       box-sizing: border-box;
       outline: none;
       transition: all 0.3s ease;
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .hero-job-input:focus {
@@ -1000,8 +1037,8 @@
 
     .hero-job-btn {
       width: 100% !important;
-      padding: 16px 32px !important;
-      font-size: 1.05rem !important;
+      padding: 14px 28px !important;
+      font-size: 1rem !important;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -1011,6 +1048,242 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
+    }
+
+    /* ─── Description Guide Helper Box ─── */
+    .description-guide {
+      background: #FAF7F2;
+      border: 1px solid rgba(45, 62, 56, 0.1);
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    .guide-title {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(55, 74, 67, 0.95);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .guide-title strong {
+      font-weight: 700;
+      color: var(--green-deep);
+    }
+
+    /* ─── Compact Waitlist Form Spacing Overrides ─── */
+    .waitlist-form-card .form-group {
+      margin-bottom: 0.85rem !important;
+    }
+
+    .waitlist-form-card .form-row {
+      margin-bottom: 0.85rem !important;
+      gap: 16px !important;
+    }
+
+    .waitlist-form-card .form-label {
+      margin-bottom: 0.35rem !important;
+      font-size: 0.8rem !important;
+    }
+
+    .waitlist-form-card .form-input {
+      padding: 10px 14px !important;
+      font-size: 0.95rem !important;
+    }
+
+    .waitlist-form-card .form-textarea {
+      padding: 12px 14px !important;
+      min-height: 80px !important;
+    }
+
+    .waitlist-form-card .form-actions {
+      margin-top: 1.5rem !important;
+    }
+
+    /* ─── Compact Photo Upload Zone Overrides ─── */
+    .photo-upload-zone {
+      padding: 1rem !important;
+      min-height: 95px !important;
+      gap: 4px !important;
+    }
+
+    .photo-upload-zone .upload-icon {
+      width: 28px !important;
+      height: 28px !important;
+      margin-bottom: 2px !important;
+    }
+
+    .photo-upload-zone .upload-text {
+      font-size: 0.85rem !important;
+      margin: 0 !important;
+    }
+
+    .photo-upload-zone .upload-limit {
+      font-size: 0.75rem !important;
+      margin: 0 !important;
+    }
+
+    /* ─── Testimonials Carousel Responsive Overrides ─── */
+    .testimonials-grid {
+      display: flex !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+      scroll-behavior: smooth !important;
+      gap: 20px !important;
+      padding-top: 15px !important;
+      padding-bottom: 24px !important;
+      margin-inline: 0 !important;
+      padding-inline: 0 !important;
+      scrollbar-width: none !important; /* Hide scrollbar for Firefox */
+      -ms-overflow-style: none !important; /* IE/Edge */
+    }
+
+    .testimonials-grid::-webkit-scrollbar {
+      display: none !important; /* Hide scrollbar for Chrome/Safari/Opera */
+    }
+
+    .testimonials-dots {
+      display: flex !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      margin-top: 1.5rem !important;
+    }
+
+    /* Desktop Viewport (3 cards per screen view) */
+    @media (min-width: 851px) {
+      .testimonial-card {
+        flex: 0 0 calc(33.333% - 13.3px) !important;
+        scroll-snap-align: start !important;
+      }
+      .testimonials-dots .dot:nth-child(4),
+      .testimonials-dots .dot:nth-child(5) {
+        display: none !important;
+      }
+    }
+
+    /* Tablet Viewport (2 cards per screen view) */
+    @media (min-width: 601px) and (max-width: 850px) {
+      .testimonial-card {
+        flex: 0 0 calc(50% - 10px) !important;
+        scroll-snap-align: start !important;
+      }
+      .testimonials-dots .dot:nth-child(5) {
+        display: none !important;
+      }
+    }
+
+    /* Mobile Viewport (1 card per screen view, peeking next) */
+    @media (max-width: 600px) {
+      .testimonial-card {
+        flex: 0 0 85% !important;
+        scroll-snap-align: start !important;
+      }
+      
+      /* Mobile Hero Textarea and Spacing Adaptations to Prevent Scrolling */
+      .hero-content {
+        gap: 12px !important;
+        text-align: center !important;
+        align-items: center !important; /* Center align elements inside hero */
+      }
+      .hero-content .hero-welcome {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.12em !important;
+        text-align: center !important;
+      }
+      .hero-content .hero-heading {
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0px !important;
+        text-align: center !important;
+      }
+      .hero-content .hero-sub {
+        font-size: 0.875rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 0px !important;
+        text-align: center !important;
+      }
+      .hero-search-label {
+        font-size: 0.875rem !important;
+        text-align: center !important;
+      }
+      .hero-job-wrapper {
+        align-items: center !important;
+      }
+      .hero-job-box {
+        padding: 0.75rem !important;
+        border-radius: 12px !important;
+        margin-top: 0.25rem !important;
+        gap: 8px !important;
+      }
+      .hero-job-input {
+        font-size: 0.875rem !important;
+        padding: 8px 12px !important;
+        height: 60px !important; /* Shrunk height on mobile screen viewports */
+      }
+      .hero-job-input::placeholder {
+        font-size: 0.8rem !important;
+      }
+      .hero-job-btn {
+        padding: 10px 20px !important;
+        font-size: 0.875rem !important;
+      }
+    }
+
+    /* ─── How Our Service Works Custom Actions & Button ─── */
+    .how-it-works-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 3.5rem;
+      padding: 0 var(--gutter);
+    }
+
+    .btn-post-job {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 15px 36px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border-radius: 10px;
+      background: var(--green-deep) !important; /* Solid dark green background */
+      color: #FFFFFF !important; /* White text color */
+      border: none !important;
+      width: 100%;
+      max-width: 420px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(45, 62, 56, 0.15);
+      text-transform: none; /* Keep simple title case */
+    }
+
+    .btn-post-job:hover {
+      background: #3a4f47 !important; /* Slightly lighter on hover */
+      color: #FFFFFF !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(45, 62, 56, 0.25);
+    }
+
+    .sparkle-icon {
+      width: 18px;
+      height: 18px;
+      fill: #C5A880; /* Elegant gold color sparkle */
+    }
+
+    /* ─── Hero Eyebrow & Golden Italic Highlight Overrides ─── */
+    .hero-content .hero-welcome {
+      order: -1 !important; /* Move above heading in flex flow */
+      margin-top: 0 !important;
+      margin-bottom: 0.5rem !important;
+      text-transform: uppercase !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 0.15em !important;
+      font-weight: 600 !important;
+      font-family: var(--font-sans) !important;
     }
   </style>
 </head>
@@ -1044,25 +1317,29 @@
 
   <main>
 
-    <!-- ═══════════════════════════════════════ HERO (CENTERED & INTERACTIVE) ══ -->
-    <section class="hero-centered section" id="home">
-      <div class="container hero-centered-content" data-animate="fade-up">
-        <h2 class="hero-centered-welcome">Welcome to Archwy</h2>
-        <h1 class="hero-centered-heading">
-          Plumbing & gas quotes done <span class="highlight">the Archwy way</span>
-        </h1>
-        <p class="hero-centered-sub">
-          A dedicated expert inspects your property and sources 2-3 competitive quotes from vetted local plumbers on your behalf.
-        </p>
-
-        <!-- Interactive Job Starter -->
-        <div class="hero-search-wrapper hero-job-wrapper">
-          <p class="hero-search-label">Find a local tradesperson to help you:</p>
-          <div class="hero-job-box">
-            <textarea id="heroJobDescription" class="hero-job-input" placeholder="Describe your project or problem (e.g. Boiler is leaking, need a radiator relocated...)" rows="2" required></textarea>
-            <button type="button" id="heroCtaBtn" class="btn btn-primary hero-job-btn">Get Free Quotes</button>
+    <!-- ═══════════════════════════════════════ HERO ══ -->
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content" data-animate="fade-up">
+          <p class="hero-welcome">WELCOME TO ARCHWY</p>
+          <h1 class="hero-heading">
+            Plumbing & gas quotes done the Archwy way
+          </h1>
+          <p class="hero-sub">
+            A dedicated expert inspects your property and sources 2-3 competitive quotes from vetted local plumbers on your behalf.
+          </p>
+          <!-- Interactive Job Starter -->
+          <div class="hero-search-wrapper hero-job-wrapper">
+            <p class="hero-search-label">Find a local tradesperson near you:</p>
+            <div class="hero-job-box">
+              <textarea id="heroJobDescription" class="hero-job-input" placeholder="Describe your project or problem (e.g. Boiler is leaking, need a radiator relocated...)" rows="2" required></textarea>
+              <button type="button" id="heroCtaBtn" class="btn btn-primary hero-job-btn">Get Free Quotes</button>
+            </div>
+            <p class="hero-search-note">100% free quote-matching service for Winchester homeowners.</p>
           </div>
-          <p class="hero-search-note">100% free quote-matching service for local homeowners.</p>
+        </div>
+        <div class="hero-image-wrap" data-animate="fade-left">
+          <img src="img/hero.png?v=2" alt="Professional tradesman working in a modern home" class="hero-img" loading="eager" />
         </div>
       </div>
     </section>
@@ -1072,14 +1349,14 @@
       <div class="container">
         <div class="how-it-works-header" data-animate="fade-up">
           <p class="section-eyebrow">The solution</p>
-          <h2 class="section-title">How Our Service Works</h2>
+          <h2 class="section-title">How our service works</h2>
         </div>
 
-        <div class="timeline-container">
+        <div class="timeline-container" data-animate="fade-up" data-delay="100">
           <div class="timeline-line"></div>
 
           <!-- Step 1 -->
-          <div class="timeline-step" data-animate="fade-up" data-delay="0">
+          <div class="timeline-step">
             <div class="step-circle-wrapper">
               <div class="step-circle">
                 <!-- Icon of a document/phone -->
@@ -1095,7 +1372,7 @@
           </div>
 
           <!-- Step 2 -->
-          <div class="timeline-step" data-animate="fade-up" data-delay="150">
+          <div class="timeline-step">
             <div class="step-circle-wrapper">
               <div class="step-circle">
                 <!-- Icon of two figures shaking hands -->
@@ -1106,26 +1383,32 @@
               <div class="step-number-badge">2</div>
             </div>
             <div class="timeline-text">
-              <h3 class="step-card-title">Actively matches with tradesmen</h3>
+              <h3 class="step-card-title">Archwy matches with appropriate tradesmen</h3>
             </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="timeline-step" data-animate="fade-up" data-delay="300">
+          <div class="timeline-step">
             <div class="step-circle-wrapper">
               <div class="step-circle">
-                <!-- Icon of a checkmark in a circle -->
+                <!-- Icon of a shield outline -->
                 <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
               <div class="step-number-badge">3</div>
             </div>
             <div class="timeline-text">
-              <h3 class="step-card-title">Receive trusted options</h3>
+              <h3 class="step-card-title">Choose your quote. No obligation</h3>
             </div>
           </div>
         </div>
+
+        <!-- Post your job CTA button matching client screenshot -->
+        <div class="how-it-works-actions">
+          <a href="#waitlist" class="btn btn-primary btn-post-job">Post your job</a>
+        </div>
+
       </div>
     </section>
 
@@ -1136,7 +1419,7 @@
       <div class="benefits-split-left" data-animate="fade-right">
         <div class="benefits-split-video-wrapper">
           <video class="benefits-split-video" autoplay muted loop playsinline>
-            <source src="generate_a_landscape_video_of.mp4" type="video/mp4">
+            <source src="Video/generate_a_landscape_video_of.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <div class="benefits-split-overlay"></div>
@@ -1193,7 +1476,7 @@
         </div>
 
         <div class="testimonials-grid" data-animate="fade-up">
-          <!-- Testimonial Card 1 -->
+          <!-- Testimonial Card 1 (Sophie Clarke) -->
           <div class="testimonial-card">
             <div class="quote-badge">
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1201,11 +1484,11 @@
               </svg>
             </div>
             <blockquote class="quote-text">
-              “After a severe plumbing issue in our home, we reached out for help. He provided honest, knowledgeable advice, took the stress out of the process, and connected us with an excellent tradesperson. We couldn’t be happier with the result.”
+              “I’ve used Archwy twice now to find plumbers, and both experiences have been excellent. It’s a simple, straightforward site that does exactly what it needs to do.”
             </blockquote>
             <div class="quote-meta">
               <div class="quote-profile">
-                <img src="IMG_5265.png" alt="Sophie Clarke" class="quote-avatar" />
+                <img src="img/IMG_5265.png" alt="Sophie Clarke" class="quote-avatar" />
                 <div class="author-details">
                   <cite class="quote-author">Sophie Clarke</cite>
                   <span class="quote-verified">Verified Review</span>
@@ -1221,7 +1504,91 @@
             </div>
           </div>
 
-          <!-- Testimonial Card 2 -->
+          <!-- Testimonial Card 2 (Dave W.) -->
+          <div class="testimonial-card">
+            <div class="quote-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+              </svg>
+            </div>
+            <blockquote class="quote-text">
+              “One of the most honest experiences I’ve had. Corban came out to inspect my complicated plumbing issue and connected me with a great tradesperson the following day. Highly recommend this service.”
+            </blockquote>
+            <div class="quote-meta">
+              <div class="quote-profile">
+                <img src="img/b2c38ae9-0e16-4b6c-af22-3ee88b2a905d.jpg" alt="Dave W." class="quote-avatar" />
+                <div class="author-details">
+                  <cite class="quote-author">Dave W.</cite>
+                  <span class="quote-verified">Verified Review</span>
+                </div>
+              </div>
+              <div class="star-rating" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 3 (Matthew G.) -->
+          <div class="testimonial-card">
+            <div class="quote-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+              </svg>
+            </div>
+            <blockquote class="quote-text">
+              “Great service. I used Archwy to find a handyman to hang a large mirror. I left a Simple description and was responded to promptly.”
+            </blockquote>
+            <div class="quote-meta">
+              <div class="quote-profile">
+                <img src="img/2f2c5b86-de1f-4b21-b3da-4dadd410efeb.jpg" alt="Matthew G." class="quote-avatar" />
+                <div class="author-details">
+                  <cite class="quote-author">Matthew G.</cite>
+                  <span class="quote-verified">Verified Review</span>
+                </div>
+              </div>
+              <div class="star-rating" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 4 (Callum F.) -->
+          <div class="testimonial-card">
+            <div class="quote-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" />
+              </svg>
+            </div>
+            <blockquote class="quote-text">
+              “A brilliant local service. Archwy connected me with two competitive quotes, and the plumber I selected was outstanding. Definitely be using them again.”
+            </blockquote>
+            <div class="quote-meta">
+              <div class="quote-profile">
+                <img src="img/076a804a-dfbc-4a0f-ad6c-3c66d103651c.jpg" alt="Callum F." class="quote-avatar" />
+                <div class="author-details">
+                  <cite class="quote-author">Callum F.</cite>
+                  <span class="quote-verified">Verified Review</span>
+                </div>
+              </div>
+              <div class="star-rating" aria-label="5 out of 5 stars">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial Card 5 (Nick Bennett) -->
           <div class="testimonial-card">
             <div class="quote-badge">
               <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1233,7 +1600,7 @@
             </blockquote>
             <div class="quote-meta">
               <div class="quote-profile">
-                <img src="f2ccf609-22b4-41b7-acd7-31c7847b5f48.jpg" alt="Nick Bennett" class="quote-avatar" />
+                <img src="img/f2ccf609-22b4-41b7-acd7-31c7847b5f48.jpg" alt="Nick Bennett" class="quote-avatar" />
                 <div class="author-details">
                   <cite class="quote-author">Nick Bennett</cite>
                   <span class="quote-verified">Verified Review</span>
@@ -1252,38 +1619,54 @@
         <div class="testimonials-dots">
           <span class="dot active"></span>
           <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════ MEET THE FOUNDER ══ -->
     <section class="meet-founder section" id="meet-founder">
-      <div class="container meet-founder-inner-split">
+      <div class="container">
         
-        <!-- Video on the Left (Portrait) -->
-        <div class="meet-founder-video-wrap" data-animate="fade-right">
-          <div class="founder-portrait-video-container">
-            <video class="founder-portrait-video" autoplay muted loop playsinline>
-              <source src="generate_the_image_into_a_vide.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay-badge">Corban Cutten, Founder</div>
-          </div>
-        </div>
-
-        <!-- Shortened Text on the Right -->
-        <div class="meet-founder-content-split" data-animate="fade-left">
+        <!-- Header pulled out to render at the top on desktop and mobile -->
+        <div class="meet-founder-header" data-animate="fade-up">
           <p class="section-eyebrow">Meet the Founder</p>
           <h2 class="section-title">A Message From Corban</h2>
+        </div>
+
+        <div class="meet-founder-inner-split">
           
-          <div class="meet-founder-letter-card-split">
-            <div class="meet-founder-bio-short">
+          <!-- Video on the Left (Portrait) -->
+          <div class="meet-founder-video-wrap" data-animate="fade-right">
+            <div class="founder-portrait-video-container">
+              <video class="founder-portrait-video" autoplay muted loop playsinline>
+                <source src="Video/generate_the_image_into_a_vide.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="video-overlay-badge">Corban Cutten, Founder</div>
+            </div>
+          </div>
+
+          <!-- Shortened Text on the Right -->
+          <div class="meet-founder-content-split" data-animate="fade-left">
+            <div class="meet-founder-letter-card-split">
+            <div class="meet-founder-bio">
               <p>
-                "After years as a gas safe engineer in Winchester, I realized homeowners are often at a disadvantage when hiring tradespeople—forced to make major heating and plumbing decisions without independent expert advice."
+                "Archwy was founded here in Winchester in 2025 with one simple goal. To make finding trusted local tradespeople simple, honest, and as straightforward as possible."
               </p>
-              <p>
-                "I started Archwy to change that. I perform a single, honest inspection of your property and source competitive quotes from our vetted local network on your behalf. We handle the stress so you can make confident choices."
-              </p>
+              <div class="founder-bio-collapsed-content">
+                <p>
+                  "Unlike many larger platforms, Archwy doesn’t stop at simply making a connection. As a locally run service, we’re here to guide homeowners throughout the process, providing support, advice, and a smoother experience from start to finish."
+                </p>
+                <p>
+                  "As part of our commitment to Winchester, we offer free on-site inspections. Whether you’d like an independent assessment before arranging work, need help understanding an issue, or simply want reassurance after a job has been completed, we’re here to help."
+                </p>
+              </div>
+              <button id="toggleFounderMessage" class="btn-read-story" aria-expanded="false">
+                Read Corban's Message <span class="arrow">↓</span>
+              </button>
             </div>
             
             <div class="meet-founder-signature-block-split">
@@ -1305,7 +1688,7 @@
     <section class="trust section" id="guarantee">
       <div class="container trust-grid">
         <div class="trust-image-wrap" data-animate="fade-right" data-delay="0">
-          <img src="bathroom.png" alt="Luxury modern bathroom with black sink and gold fixtures" class="trust-img" loading="lazy" />
+          <img src="img/bathroom.png" alt="Luxury modern bathroom with black sink and gold fixtures" class="trust-img" loading="lazy" />
         </div>
 
         <div class="trust-content" data-animate="fade-left" data-delay="150">
@@ -1377,7 +1760,15 @@
             <h3 class="step-heading">Step 2 of 2: Sourcing Details</h3>
 
             <div class="form-group">
-              <label class="form-label" for="q_extra">Describe a project or problem...</label>
+              <!-- Guide checklist comes FIRST, before the label -->
+              <div class="description-guide" style="margin-bottom: 0.6rem; margin-top: 0;">
+                <p class="guide-title">
+                  <strong>💡 Guide checklist:</strong>
+                  what issue &bull; location &bull; timeline &bull; trade needed &bull; photos
+                </p>
+              </div>
+
+              <label class="form-label" for="q_extra" style="margin-bottom: 0.35rem; display: block;">Describe a project or problem...</label>
               <textarea id="q_extra" name="q_extra" class="form-input form-textarea" placeholder="e.g. Boiler is leaking, radiator needs moving, quote for a bathroom remodel..." rows="4" required></textarea>
               <span class="form-error" role="alert"></span>
             </div>
@@ -1439,8 +1830,8 @@
                 <span class="form-error" role="alert"></span>
               </div>
               <div class="form-group">
-                <label for="fphone" class="form-label">Phone Number</label>
-                <input type="tel" id="fphone" name="phone" class="form-input" placeholder="e.g. 07700 900000" required autocomplete="tel" />
+                <label for="fphone" class="form-label">Phone Number <span style="font-weight: 400; opacity: 0.7;">(optional)</span></label>
+                <input type="tel" id="fphone" name="phone" class="form-input" placeholder="e.g. 07700 900000" autocomplete="tel" />
                 <span class="form-error" role="alert"></span>
               </div>
             </div>
