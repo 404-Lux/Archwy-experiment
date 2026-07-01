@@ -13,6 +13,9 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ── Auto-play muted background videos (replaces HTML autoplay attr) ── */
+  document.querySelectorAll('video[muted]').forEach(v => { v.play().catch(() => {}); });
+
   /* ── Mobile nav toggle ── */
   const toggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
