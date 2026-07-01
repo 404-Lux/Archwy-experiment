@@ -351,7 +351,6 @@
         });
     });
   }
-
   /* ── Interactive Glue Logic for Hero Job Description Starter ── */
   const heroJobDescription = document.getElementById('heroJobDescription');
   const heroCtaBtn = document.getElementById('heroCtaBtn');
@@ -387,7 +386,6 @@
       }
     });
   }
-
   /* ── Smooth scroll for anchor links ── */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
@@ -527,17 +525,39 @@
   const grid = document.querySelector('.testimonials-grid');
   const dots = document.querySelectorAll('.testimonials-dots .dot');
   if (grid && dots.length > 0) {
+    const cards = grid.querySelectorAll('.testimonial-card');
     grid.addEventListener('scroll', () => {
-      const scrollRange = grid.scrollWidth - grid.clientWidth;
-      const index = grid.scrollLeft > scrollRange / 2 ? 1 : 0;
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === index);
-      });
+      if (cards.length > 0) {
+        const gridRect = grid.getBoundingClientRect();
+        let closestIndex = 0;
+        let minDiff = Infinity;
+
+        cards.forEach((card, idx) => {
+          const cardRect = card.getBoundingClientRect();
+          // Distance from the card's left boundary to the grid container's left boundary
+          const diff = Math.abs(cardRect.left - gridRect.left);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = idx;
+          }
+        });
+
+        let visibleDotsCount = 5;
+        if (window.innerWidth >= 851) {
+          visibleDotsCount = 3;
+        } else if (window.innerWidth >= 601) {
+          visibleDotsCount = 4;
+        }
+        const activeIndex = Math.min(closestIndex, visibleDotsCount - 1);
+
+        dots.forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIndex);
+        });
+      }
     }, { passive: true });
 
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => {
-        const cards = grid.querySelectorAll('.testimonial-card');
         if (cards[idx]) {
           cards[idx].scrollIntoView({
             behavior: 'smooth',
@@ -595,55 +615,53 @@
     });
   }
 
-  /* ── Testimonials dynamic truncation on mobile ── */
+  /* ── Testimonials dynamic truncation ── */
   const quotes = document.querySelectorAll('.quote-text');
   const quoteLimit = 110;
 
-  if (window.innerWidth <= 850) {
-    quotes.forEach(quote => {
-      const fullText = quote.innerHTML.trim();
-      const plainText = quote.textContent.trim();
+  quotes.forEach(quote => {
+    const fullText = quote.innerHTML.trim();
+    const plainText = quote.textContent.trim();
 
-      if (plainText.length > quoteLimit) {
-        let truncateIndex = quoteLimit;
-        while (truncateIndex > 0 && plainText[truncateIndex] !== ' ') {
-          truncateIndex--;
-        }
-        if (truncateIndex === 0) truncateIndex = quoteLimit;
-
-        let suffix = '...';
-        if (plainText.startsWith('“') || plainText.startsWith('"')) {
-          suffix = '...”';
-        }
-
-        const truncatedText = plainText.slice(0, truncateIndex).trim() + suffix;
-        quote.setAttribute('data-full', fullText);
-        quote.setAttribute('data-truncated', truncatedText);
-
-        quote.textContent = truncatedText;
-
-        const seeMoreBtn = document.createElement('span');
-        seeMoreBtn.className = 'see-more-btn';
-        seeMoreBtn.textContent = 'see more';
-        quote.appendChild(seeMoreBtn);
-
-        seeMoreBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const isExpanded = quote.classList.contains('expanded');
-          if (isExpanded) {
-            quote.textContent = truncatedText;
-            seeMoreBtn.textContent = 'see more';
-            quote.appendChild(seeMoreBtn);
-            quote.classList.remove('expanded');
-          } else {
-            quote.innerHTML = fullText;
-            seeMoreBtn.textContent = 'show less';
-            quote.appendChild(seeMoreBtn);
-            quote.classList.add('expanded');
-          }
-        });
+    if (plainText.length > quoteLimit) {
+      let truncateIndex = quoteLimit;
+      while (truncateIndex > 0 && plainText[truncateIndex] !== ' ') {
+        truncateIndex--;
       }
-    });
-  }
+      if (truncateIndex === 0) truncateIndex = quoteLimit;
+
+      let suffix = '...';
+      if (plainText.startsWith('“') || plainText.startsWith('"')) {
+        suffix = '...”';
+      }
+
+      const truncatedText = plainText.slice(0, truncateIndex).trim() + suffix;
+      quote.setAttribute('data-full', fullText);
+      quote.setAttribute('data-truncated', truncatedText);
+
+      quote.textContent = truncatedText;
+
+      const seeMoreBtn = document.createElement('span');
+      seeMoreBtn.className = 'see-more-btn';
+      seeMoreBtn.textContent = 'see more';
+      quote.appendChild(seeMoreBtn);
+
+      seeMoreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = quote.classList.contains('expanded');
+        if (isExpanded) {
+          quote.textContent = truncatedText;
+          seeMoreBtn.textContent = 'see more';
+          quote.appendChild(seeMoreBtn);
+          quote.classList.remove('expanded');
+        } else {
+          quote.innerHTML = fullText;
+          seeMoreBtn.textContent = 'show less';
+          quote.appendChild(seeMoreBtn);
+          quote.classList.add('expanded');
+        }
+      });
+    }
+  });
 
 })();
